@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="navbar.css">
+   
   <style>
     :root {
       --primary: #0f172a;
@@ -54,69 +56,7 @@
       background: var(--surface-dark);
       overflow-x: hidden;
     }
-
-    /* Modern Navbar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
-      transition: all 0.3s ease;
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-light);
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--accent);
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient-accent);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover::after, .nav-links a.active::after {
-      width: 100%;
-    }
-
+ 
     /* Hero Section */
     .hero {
       margin-top: 80px;
@@ -487,34 +427,24 @@
   justify-content: space-between;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none;
-}
+ 
 
-.logo-img {
-  width: 128px;       /* Logonun boyutu */
-  height: 120px;
-  margin-right: 20px; /* Yazı ile logo arası boşluk */
-}
+ 
   </style>
 </head>
 <body>
+  <script src="navbar.js"></script>
   <!-- Modern Navbar -->
- <nav class="navbar">
+<nav class="navbar">
   <div class="nav-container">
     <a href="index.html" class="logo">
       <img src="images/devcomnavlogo.png" alt="DevCom Logo" class="logo-img">
       DevCom
     </a>
+    <!-- Mobile menu button JavaScript ile otomatik eklenir -->
     <ul class="nav-links">
       <li><a href="index.html">Ana Sayfa</a></li>
       <li><a href="dersler.html">Eğitimler</a></li>
-      <li><a href="index.html#team">Eğitmenler</a></li>
       <li><a href="admin.html">Yönetim</a></li>
       <li><a href="pano.html">Fikir Panosu</a></li>
       <li><a href="contact.html">İletişim</a></li>
