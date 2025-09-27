@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dersler - Developer Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="dersler-style.css">
+   <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+  <!-- Modern Navbar -->
+ <nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="images/devcomnavlogo.png" alt="DevCom Logo" class="logo-img">
+      DevCom
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="dersler.html">Eğitimler</a></li>
+      <li><a href="index.html#team">Eğitmenler</a></li>
+      <li><a href="admin.html">Yönetim</a></li>
+      <li><a href="pano.html">Fikir Panosu</a></li>
+      <li><a href="contact.html">İletişim</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container loading-animation">
+      <h1>Eğitim Programları</h1>
+      <p>Uzman eğitmenlerimiz tarafından hazırlanan, uygulamalı ve güncel içeriklerle dolu kurslarımızı keşfedin.</p>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="filter-section">
+    <div class="filter-container loading-animation">
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" class="search-input" placeholder="Ders ara..." id="searchInput">
+      </div>
+      
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Tüm Dersler</button>
+        <button class="filter-btn" data-filter="programming">Programlama</button>
+        <button class="filter-btn" data-filter="web">Web Geliştirme</button>
+        <button class="filter-btn" data-filter="data">Veri & Veritabanı</button>
+        <button class="filter-btn" data-filter="security">Güvenlik</button>
+        <button class="filter-btn" data-filter="tools">Araçlar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section class="courses-section">
+    <div class="courses-container">
+      
+      <!-- C# Course -->
+      <div class="course-card csharp loading-animation" data-category="programming" data-search="c# csharp .net programlama taner saydam">
+        <div class="course-header">
+          <div class="course-icon">
+            <i class="fab fa-microsoft"></i>
+          </div>
+          <div class="course-info">
+            <h2 class="course-title">C# & .NET Core</h2>
+            <div class="course-instructor">
+              <img src="images/tanersaydamprofile.jpeg" alt="Taner Saydam" class="instructor-avatar">
+              <span class="instructor-name">Taner Saydam</span>
+            </div>
+            <div class="course-tags">
+              <span class="course-tag">C#</span>
+              <span class="course-tag">.NET Core</span>
+              <span class="course-tag">Web API</span>
+              <span class="course-tag">Entity Framework</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-description">
+          Modern C# dilinin gücünü keşfedin. .NET Core ile web uygulamaları, API'ler ve mikro servisler geliştirmeyi öğrenin. Clean Architecture, CQRS pattern'leri ve modern yazılım geliştirme prensipleri ile profesyonel projeler oluşturun.
+        </div>
+        <div class="course-details">
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-clock"></i></div>
+            <div class="detail-info">
+              <h4>Süre</h4>
+              <span>40 Saat</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-signal"></i></div>
+            <div class="detail-info">
+              <h4>Seviye</h4>
+              <span>Orta-İleri</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-users"></i></div>
+            <div class="detail-info">
+              <h4>Katılımcı</h4>
+              <span>25+ Kişi</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-certificate"></i></div>
+            <div class="detail-info">
+              <h4>Sertifika</h4>
+              <span>Evet</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-actions">
+          <a href="#" class="action-btn primary"><i class="fas fa-play"></i> Derse Katıl</a>
+          <a href="#" class="action-btn secondary"><i class="fas fa-info-circle"></i> Detaylar</a>
+        </div>
+      </div>
+
+      <!-- JavaScript Course -->
+      <div class="course-card javascript loading-animation" data-category="web programming" data-search="javascript js web geliştirme frontend rafet tunahan kayahan">
+        <div class="course-header">
+          <div class="course-icon">
+            <i class="fab fa-js-square"></i>
+          </div>
+          <div class="course-info">
+            <h2 class="course-title">JavaScript & Modern Web</h2>
+            <div class="course-instructor">
+              <img src="images/manprofile.png" alt="Rafet Tunahan Kayahan" class="instructor-avatar">
+              <span class="instructor-name">Rafet Tunahan Kayahan</span>
+            </div>
+            <div class="course-tags">
+              <span class="course-tag">JavaScript</span>
+              <span class="course-tag">ES6+</span>
+              <span class="course-tag">DOM</span>
+              <span class="course-tag">Async Programming</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-description">
+          Modern web geliştirmenin kalbi JavaScript'i sıfırdan ileri seviyeye öğrenin. ES6+ özellikleri, asenkron programlama, DOM manipülasyonu ve modern JavaScript framework'lerine hazırlık eğitimi.
+        </div>
+        <div class="course-details">
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-clock"></i></div>
+            <div class="detail-info">
+              <h4>Süre</h4>
+              <span>35 Saat</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-signal"></i></div>
+            <div class="detail-info">
+              <h4>Seviye</h4>
+              <span>Başlangıç-Orta</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-users"></i></div>
+            <div class="detail-info">
+              <h4>Katılımcı</h4>
+              <span>30+ Kişi</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-certificate"></i></div>
+            <div class="detail-info">
+              <h4>Sertifika</h4>
+              <span>Evet</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-actions">
+          <a href="#" class="action-btn primary"><i class="fas fa-play"></i> Derse Katıl</a>
+          <a href="#" class="action-btn secondary"><i class="fas fa-info-circle"></i> Detaylar</a>
+        </div>
+      </div>
+
+      <!-- Python Course -->
+      <div class="course-card python loading-animation" data-category="programming data" data-search="python programlama veri bilimi berkcan gümüşışık">
+        <div class="course-header">
+          <div class="course-icon">
+            <i class="fab fa-python"></i>
+          </div>
+          <div class="course-info">
+            <h2 class="course-title">Python & Veri Bilimi</h2>
+            <div class="course-instructor">
+              <img src="images/manprofile.png" alt="Berkcan Gümüşışık" class="instructor-avatar">
+              <span class="instructor-name">Berkcan Gümüşışık</span>
+            </div>
+            <div class="course-tags">
+              <span class="course-tag">Python</span>
+              <span class="course-tag">Pandas</span>
+              <span class="course-tag">NumPy</span>
+              <span class="course-tag">Matplotlib</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-description">
+          Python'un güçlü yapısını keşfedin. Temel programlamadan veri analizi, makine öğrenmesi ve otomasyon projelerine kadar geniş bir yelpazede Python kullanmayı öğrenin.
+        </div>
+        <div class="course-details">
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-clock"></i></div>
+            <div class="detail-info">
+              <h4>Süre</h4>
+              <span>45 Saat</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-signal"></i></div>
+            <div class="detail-info">
+              <h4>Seviye</h4>
+              <span>Başlangıç-İleri</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-users"></i></div>
+            <div class="detail-info">
+              <h4>Katılımcı</h4>
+              <span>35+ Kişi</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-certificate"></i></div>
+            <div class="detail-info">
+              <h4>Sertifika</h4>
+              <span>Evet</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-actions">
+          <a href="#" class="action-btn primary"><i class="fas fa-play"></i> Derse Katıl</a>
+          <a href="#" class="action-btn secondary"><i class="fas fa-info-circle"></i> Detaylar</a>
+        </div>
+      </div>
+
+      <!-- SQL Course -->
+      <div class="course-card sql loading-animation" data-category="data" data-search="sql veritabanı database zekeriye bozkurt">
+        <div class="course-header">
+          <div class="course-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <div class="course-info">
+            <h2 class="course-title">SQL & Veritabanı Yönetimi</h2>
+            <div class="course-instructor">
+              <img src="images/manprofile.png" alt="Zekeriye Bozkurt" class="instructor-avatar">
+              <span class="instructor-name">Zekeriye Bozkurt</span>
+            </div>
+            <div class="course-tags">
+              <span class="course-tag">SQL</span>
+              <span class="course-tag">PostgreSQL</span>
+              <span class="course-tag">Optimizasyon</span>
+              <span class="course-tag">Stored Procedures</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-description">
+          Veritabanı dünyasına adım atın. Temel SQL sorgulamadan ileri seviye optimizasyon tekniklerine, veritabanı tasarımından performans ayarlamaya kadar kapsamlı SQL eğitimi.
+        </div>
+        <div class="course-details">
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-clock"></i></div>
+            <div class="detail-info">
+              <h4>Süre</h4>
+              <span>30 Saat</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-signal"></i></div>
+            <div class="detail-info">
+              <h4>Seviye</h4>
+              <span>Başlangıç-Orta</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-users"></i></div>
+            <div class="detail-info">
+              <h4>Katılımcı</h4>
+              <span>20+ Kişi</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-certificate"></i></div>
+            <div class="detail-info">
+              <h4>Sertifika</h4>
+              <span>Evet</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-actions">
+          <a href="#" class="action-btn primary"><i class="fas fa-play"></i> Derse Katıl</a>
+          <a href="#" class="action-btn secondary"><i class="fas fa-info-circle"></i> Detaylar</a>
+        </div>
+      </div>
+
+      <!-- Git & GitHub Course -->
+      <div class="course-card git loading-animation" data-category="tools" data-search="git github versiyon kontrol mert gör">
+        <div class="course-header">
+          <div class="course-icon">
+            <i class="fab fa-git-alt"></i>
+          </div>
+          <div class="course-info">
+            <h2 class="course-title">Git & GitHub Mastery</h2>
+            <div class="course-instructor">
+              <img src="images/manprofile.png" alt="Mert Gör" class="instructor-avatar">
+              <span class="instructor-name">Mert Gör</span>
+            </div>
+            <div class="course-tags">
+              <span class="course-tag">Git</span>
+              <span class="course-tag">GitHub</span>
+              <span class="course-tag">Version Control</span>
+              <span class="course-tag">Collaboration</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-description">
+          Modern yazılım geliştirmenin vazgeçilmezi Git ve GitHub'ı öğrenin. Takım çalışması, sürüm kontrolü, branch yönetimi ve açık kaynak projelere katkıda bulunma teknikleri.
+        </div>
+        <div class="course-details">
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-clock"></i></div>
+            <div class="detail-info">
+              <h4>Süre</h4>
+              <span>20 Saat</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-signal"></i></div>
+            <div class="detail-info">
+              <h4>Seviye</h4>
+              <span>Başlangıç</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-users"></i></div>
+            <div class="detail-info">
+              <h4>Katılımcı</h4>
+              <span>40+ Kişi</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-certificate"></i></div>
+            <div class="detail-info">
+              <h4>Sertifika</h4>
+              <span>Evet</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-actions">
+          <a href="#" class="action-btn primary"><i class="fas fa-play"></i> Derse Katıl</a>
+          <a href="#" class="action-btn secondary"><i class="fas fa-info-circle"></i> Detaylar</a>
+        </div>
+      </div>
+
+      <!-- Firewall Course -->
+      <div class="course-card firewall loading-animation" data-category="security" data-search="firewall güvenlik network ağ murat özdemir">
+        <div class="course-header">
+          <div class="course-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="course-info">
+            <h2 class="course-title">Firewall & Network Security</h2>
+            <div class="course-instructor">
+              <img src="images/manprofile.png" alt="Murat Özdemir" class="instructor-avatar">
+              <span class="instructor-name">Murat Özdemir</span>
+            </div>
+            <div class="course-tags">
+              <span class="course-tag">Firewall</span>
+              <span class="course-tag">Network Security</span>
+              <span class="course-tag">pfSense</span>
+              <span class="course-tag">Monitoring</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-description">
+          Ağ güvenliğinin temellerini öğrenin. Firewall yapılandırması, güvenlik politikaları, saldırı tespiti ve önleme sistemleri ile kurumsal ağ güvenliğini sağlama teknikleri.
+        </div>
+        <div class="course-details">
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-clock"></i></div>
+            <div class="detail-info">
+              <h4>Süre</h4>
+              <span>25 Saat</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-signal"></i></div>
+            <div class="detail-info">
+              <h4>Seviye</h4>
+              <span>Orta-İleri</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-users"></i></div>
+            <div class="detail-info">
+              <h4>Katılımcı</h4>
+              <span>15+ Kişi</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-certificate"></i></div>
+            <div class="detail-info">
+              <h4>Sertifika</h4>
+              <span>Evet</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-actions">
+          <a href="#" class="action-btn primary"><i class="fas fa-play"></i> Derse Katıl</a>
+          <a href="#" class="action-btn secondary"><i class="fas fa-info-circle"></i> Detaylar</a>
+        </div>
+      </div>
+
+      <!-- OOP Course -->
+      <div class="course-card oop loading-animation" data-category="programming" data-search="oop nesne yönelimli programlama resül türfent">
+        <div class="course-header">
+          <div class="course-icon">
+            <i class="fas fa-cubes"></i>
+          </div>
+          <div class="course-info">
+            <h2 class="course-title">Nesne Yönelimli Programlama</h2>
+            <div class="course-instructor">
+              <img src="images/manprofile.png" alt="Resül Türfent" class="instructor-avatar">
+              <span class="instructor-name">Resül Türfent</span>
+            </div>
+            <div class="course-tags">
+              <span class="course-tag">OOP</span>
+              <span class="course-tag">Design Patterns</span>
+              <span class="course-tag">SOLID</span>
+              <span class="course-tag">Clean Code</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-description">
+          Nesne yönelimli programlamanın temellerini ve ileri konularını öğrenin. SOLID prensipleri, design pattern'ler ve clean code yazma teknikleri ile sürdürülebilir yazılım geliştirin.
+        </div>
+        <div class="course-details">
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-clock"></i></div>
+            <div class="detail-info">
+              <h4>Süre</h4>
+              <span>35 Saat</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-signal"></i></div>
+            <div class="detail-info">
+              <h4>Seviye</h4>
+              <span>Orta</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-users"></i></div>
+            <div class="detail-info">
+              <h4>Katılımcı</h4>
+              <span>25+ Kişi</span>
+            </div>
+          </div>
+          <div class="detail-group">
+            <div class="detail-icon"><i class="fas fa-certificate"></i></div>
+            <div class="detail-info">
+              <h4>Sertifika</h4>
+              <span>Evet</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-actions">
+          <a href="#" class="action-btn primary"><i class="fas fa-play"></i> Derse Katıl</a>
+          <a href="#" class="action-btn secondary"><i class="fas fa-info-circle"></i> Detaylar</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="dersler-script.js"></script>
+</body>
+</html>

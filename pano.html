@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fikir Panosu - Developer Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --secondary: #f59e0b;
+      --text-light: #64748b;
+      --text-dark: #0f172a;
+      --surface: #ffffff;
+      --surface-dark: #f8fafc;
+      --border: #e2e8f0;
+      --shadow: rgba(15, 23, 42, 0.08);
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      
+      /* Note colors */
+      --note-yellow: #fef08a;
+      --note-pink: #fbcfe8;
+      --note-blue: #bfdbfe;
+      --note-green: #bbf7d0;
+      --note-orange: #fed7aa;
+      --note-purple: #ddd6fe;
+      --note-red: #fecaca;
+      
+      /* Cork board */
+      --cork-bg: linear-gradient(45deg, #d4a574 25%, transparent 25%), 
+                 linear-gradient(-45deg, #d4a574 25%, transparent 25%), 
+                 linear-gradient(45deg, transparent 75%, #d4a574 75%), 
+                 linear-gradient(-45deg, transparent 75%, #d4a574 75%);
+      --cork-shadow: inset 0 0 50px rgba(139, 69, 19, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--surface-dark);
+      overflow-x: hidden;
+    }
+
+    /* Modern Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 80px;
+      padding: 4rem 2rem 2rem;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      text-align: center;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Add Idea Section */
+    .add-idea-section {
+      padding: 3rem 2rem;
+      background: var(--surface);
+    }
+
+    .add-idea-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .add-idea-form {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .form-title {
+      text-align: center;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: var(--surface-dark);
+      font-family: inherit;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      background: white;
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+    }
+
+    .form-button {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: var(--gradient-accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .form-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Cork Board */
+    .cork-board-section {
+      padding: 4rem 2rem 6rem;
+      background: #8b4513;
+      background-image: var(--cork-bg);
+      background-size: 20px 20px;
+      box-shadow: var(--cork-shadow);
+      position: relative;
+    }
+
+    .cork-board-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(101, 67, 33, 0.3) 2px, transparent 2px),
+        radial-gradient(circle at 80% 70%, rgba(101, 67, 33, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 40% 80%, rgba(101, 67, 33, 0.2) 1px, transparent 1px),
+        radial-gradient(circle at 90% 20%, rgba(101, 67, 33, 0.3) 1px, transparent 1px);
+      pointer-events: none;
+    }
+
+    .board-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .board-title {
+      text-align: center;
+      color: #4a2c14;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      font-family: 'Caveat', cursive;
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .note {
+      background: var(--note-yellow);
+      width: 250px;
+      min-height: 200px;
+      padding: 1.5rem;
+      border-radius: 3px;
+      position: relative;
+      transform: rotate(var(--rotation));
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 
+        0 4px 8px rgba(0,0,0,0.1),
+        0 2px 4px rgba(0,0,0,0.06);
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .note::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle, #ff6b6b 40%, #ff8e8e 70%);
+      border-radius: 50%;
+      box-shadow: 
+        0 2px 4px rgba(0,0,0,0.2),
+        inset 0 2px 4px rgba(255,255,255,0.3);
+    }
+
+    .note::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: #333;
+      border-radius: 50%;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .note:hover {
+      transform: rotate(0deg) scale(1.05);
+      z-index: 10;
+      box-shadow: 
+        0 10px 20px rgba(0,0,0,0.2),
+        0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .note-content {
+      margin-bottom: 1rem;
+      color: #2d3748;
+      word-wrap: break-word;
+    }
+
+    .note-author {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      font-size: 0.9rem;
+      color: #4a5568;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .note-date {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      font-size: 0.8rem;
+      color: #718096;
+    }
+
+    /* Note color variations */
+    .note:nth-child(2n) { background: var(--note-pink); --rotation: -2deg; }
+    .note:nth-child(3n) { background: var(--note-blue); --rotation: 1.5deg; }
+    .note:nth-child(4n) { background: var(--note-green); --rotation: -1deg; }
+    .note:nth-child(5n) { background: var(--note-orange); --rotation: 2deg; }
+    .note:nth-child(6n) { background: var(--note-purple); --rotation: -1.5deg; }
+    .note:nth-child(7n) { background: var(--note-red); --rotation: 0.5deg; }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      color: #4a2c14;
+      padding: 4rem 2rem;
+    }
+
+    .empty-state i {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .empty-state h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Caveat', cursive;
+    }
+
+    .empty-state p {
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .hero {
+        padding: 3rem 1rem 2rem;
+      }
+
+      .add-idea-section {
+        padding: 2rem 1rem;
+      }
+
+      .add-idea-form {
+        padding: 2rem;
+      }
+
+      .cork-board-section {
+        padding: 3rem 1rem 4rem;
+      }
+
+      .notes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1rem;
+      }
+
+      .note {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .board-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* Loading Animation */
+    .loading-animation {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .loading-animation.loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Success message */
+    .success-message {
+      background: rgba(16, 185, 129, 0.1);
+      border: 2px solid #10b981;
+      color: #065f46;
+      padding: 1rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .success-message.show {
+      display: flex;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 128px;       /* Logonun boyutu */
+  height: 120px;
+  margin-right: 20px; /* Yazı ile logo arası boşluk */
+}
+  </style>
+</head>
+<body>
+  <!-- Modern Navbar -->
+ <nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="images/devcomnavlogo.png" alt="DevCom Logo" class="logo-img">
+      DevCom
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="dersler.html">Eğitimler</a></li>
+      <li><a href="index.html#team">Eğitmenler</a></li>
+      <li><a href="admin.html">Yönetim</a></li>
+      <li><a href="pano.html">Fikir Panosu</a></li>
+      <li><a href="contact.html">İletişim</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container loading-animation">
+      <h1>Fikir Panosu</h1>
+      <p>Yaratıcı fikirlerinizi paylaşın, topluluğun görüş ve önerilerini keşfedin. Her fikir değerlidir!</p>
+    </div>
+  </section>
+ <section class="cork-board-section">
+    <div class="board-container">
+      <h2 class="board-title">Topluluk Fikir Panosu</h2>
+      
+      <div id="notesContainer" class="notes-grid">
+        <!-- Sample notes for demonstration -->
+        
+        
+
+    
+      
+      <div id="emptyState" class="empty-state" style="display: none;">
+        <i class="fas fa-sticky-note"></i>
+        <h3>Henüz fikir paylaşılmamış</h3>
+        <p>İlk fikri sen paylaş ve panoyu canlandır!</p>
+      </div>
+    </div>
+  </section>
+  <!-- Add Idea Form -->
+  <section class="add-idea-section">
+    <div class="add-idea-container loading-animation">
+      <form class="add-idea-form" id="ideaForm">
+        <h2 class="form-title">
+          <i class="fas fa-lightbulb"></i>
+          Yeni Fikir Ekle
+        </h2>
+        
+        <div class="success-message" id="successMessage">
+          <i class="fas fa-check-circle"></i>
+          <span>Fikriniz başarıyla panoya eklendi!</span>
+        </div>
+
+        <div class="form-group">
+          <label for="authorName" class="form-label">Ad Soyad</label>
+          <input type="text" id="authorName" name="authorName" class="form-input" placeholder="Adınız ve soyadınız..." required>
+        </div>
+
+        <div class="form-group">
+          <label for="ideaContent" class="form-label">Fikriniz</label>
+          <textarea id="ideaContent" name="ideaContent" class="form-textarea" placeholder="Fikrini buraya yaz... Yaratıcı ol!" required></textarea>
+        </div>
+
+        <button type="submit" class="form-button">
+          <i class="fas fa-thumbtack"></i>
+          Panoya Ekle
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Cork Board -->
+ 
+
+  <script>
+    // Loading animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('loaded');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.loading-animation').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+      } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.boxShadow = 'none';
+      }
+    });
+
+    // Form handling
+    document.getElementById('ideaForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const authorName = document.getElementById('authorName').value.trim();
+      const ideaContent = document.getElementById('ideaContent').value.trim();
+      
+      if (authorName && ideaContent) {
+        addNoteToBoard(ideaContent, authorName);
+        
+        // Show success message
+        const successMessage = document.getElementById('successMessage');
+        successMessage.classList.add('show');
+        
+        // Clear form
+        this.reset();
+        
+        // Hide success message after 3 seconds
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 3000);
+        
+        // Scroll to board
+        document.querySelector('.cork-board-section').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+
+    // Add note to board function
+    function addNoteToBoard(content, author) {
+      const notesContainer = document.getElementById('notesContainer');
+      const emptyState = document.getElementById('emptyState');
+      
+      // Hide empty state if visible
+      emptyState.style.display = 'none';
+      
+      // Create new note
+      const note = document.createElement('div');
+      note.className = 'note';
+      
+      // Get current date
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('tr-TR', { 
+        day: 'numeric', 
+        month: 'long' 
+      });
+      
+      note.innerHTML = `
+        <div class="note-content">"${content}"</div>
+        <div class="note-author">- ${author}</div>
+        <div class="note-date">${dateStr}</div>
+      `;
+      
+      // Add animation
+      note.style.opacity = '0';
+      note.style.transform = 'scale(0.8) rotate(0deg)';
+      
+      // Insert at the beginning
+      notesContainer.insertBefore(note, notesContainer.firstChild);
+      
+      // Animate in
+      setTimeout(() => {
+        note.style.transition = 'all 0.5s ease';
+        note.style.opacity = '1';
+        note.style.transform = 'scale(1) rotate(' + (Math.random() * 4 - 2) + 'deg)';
+      }, 100);
+      
+      // Add hover effect after animation
+      setTimeout(() => {
+        note.addEventListener('mouseenter', function() {
+          this.style.transform = 'scale(1.05) rotate(0deg)';
+          this.style.zIndex = '10';
+        });
+        
+        note.addEventListener('mouseleave', function() {
+          this.style.transform = 'scale(1) rotate(' + (Math.random() * 4 - 2) + 'deg)';
+          this.style.zIndex = '1';
+        });
+      }, 600);
+    }
+
+    // Initialize random rotations for existing notes
+    document.querySelectorAll('.note').forEach(note => {
+      const randomRotation = Math.random() * 4 - 2; // -2 to 2 degrees
+      note.style.setProperty('--rotation', randomRotation + 'deg');
+    });
+
+    // Add interactive hover effects for existing notes
+    document.querySelectorAll('.note').forEach(note => {
+      note.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05) rotate(0deg)';
+        this.style.zIndex = '10';
+      });
+      
+      note.addEventListener('mouseleave', function() {
+        const rotation = this.style.getPropertyValue('--rotation') || '0deg';
+        this.style.transform = `scale(1) rotate(${rotation})`;
+        this.style.zIndex = '1';
+      });
+    });
+
+    // Check if board is empty on load
+    function checkEmptyState() {
+      const notes = document.querySelectorAll('.note');
+      const emptyState = document.getElementById('emptyState');
+      
+      if (notes.length === 0) {
+        emptyState.style.display = 'block';
+      } else {
+        emptyState.style.display = 'none';
+      }
+    }
+
+    // Initialize
+    checkEmptyState();
+  </script>
+  <script>
+  // Notları LocalStorage'a kaydet
+  function saveNotes() {
+    const notes = [];
+    document.querySelectorAll('.note').forEach(note => {
+      const content = note.querySelector('.note-content').textContent.replace(/"/g, '');
+      const author = note.querySelector('.note-author').textContent.replace('- ', '');
+      const date = note.querySelector('.note-date').textContent;
+      notes.push({ content, author, date });
+    });
+    localStorage.setItem('fikirPanouNotes', JSON.stringify(notes));
+  }
+
+  // LocalStorage'dan notları yükle
+  function loadNotes() {
+    const storedNotes = JSON.parse(localStorage.getItem('fikirPanouNotes')) || [];
+    const notesContainer = document.getElementById('notesContainer');
+
+    storedNotes.forEach(n => {
+      const note = document.createElement('div');
+      note.className = 'note';
+      note.innerHTML = `
+        <div class="note-content">"${n.content}"</div>
+        <div class="note-author">- ${n.author}</div>
+        <div class="note-date">${n.date}</div>
+      `;
+      notesContainer.appendChild(note);
+    });
+  }
+
+  // addNoteToBoard fonksiyonunu güncelle
+  function addNoteToBoard(content, author) {
+    const notesContainer = document.getElementById('notesContainer');
+    const emptyState = document.getElementById('emptyState');
+
+    emptyState.style.display = 'none';
+
+    const note = document.createElement('div');
+    note.className = 'note';
+
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' });
+
+    note.innerHTML = `
+      <div class="note-content">"${content}"</div>
+      <div class="note-author">- ${author}</div>
+      <div class="note-date">${dateStr}</div>
+    `;
+
+    note.style.opacity = '0';
+    note.style.transform = 'scale(0.8) rotate(0deg)';
+
+    notesContainer.insertBefore(note, notesContainer.firstChild);
+
+    setTimeout(() => {
+      note.style.transition = 'all 0.5s ease';
+      note.style.opacity = '1';
+      note.style.transform = 'scale(1) rotate(' + (Math.random() * 4 - 2) + 'deg)';
+    }, 100);
+
+    // Hover efektlerini yeniden ekle
+    setTimeout(() => {
+      note.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05) rotate(0deg)';
+        this.style.zIndex = '10';
+      });
+      note.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1) rotate(' + (Math.random() * 4 - 2) + 'deg)';
+        this.style.zIndex = '1';
+      });
+    }, 600);
+
+    // LocalStorage'a kaydet
+    saveNotes();
+  }
+
+  // Sayfa yüklendiğinde LocalStorage'dan notları yükle
+  window.addEventListener('DOMContentLoaded', () => {
+    loadNotes();
+    checkEmptyState();
+  });
+</script>
+</body>
+</html>
